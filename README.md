@@ -134,10 +134,6 @@ cd evntly
 flutter pub get
 ```
 
-Add your Firebase config files:
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-
 Run the app:
 ```bash
 flutter run
@@ -146,6 +142,8 @@ flutter run
 ---
 
 ## Architecture
+
+```
 lib/
 ├── main.dart               # entry point
 ├── theme.dart              # design system — colors, fonts, components
@@ -156,6 +154,7 @@ lib/
 ├── screens/                # all screens
 │   └── admin/              # admin-only screens
 └── widgets/                # reusable components
+```
 
 **State management:** Riverpod  
 **Navigation:** GoRouter with role-based redirect guards  
@@ -165,21 +164,22 @@ lib/
 ---
 
 ## Firestore Structure
+
+```
 users/{uid}
-name, email, role, interests[], savedEvents[],
-isVerifiedOrganizer, isBanned, createdAt
+  name, email, role, interests[], savedEvents[],
+  isVerifiedOrganizer, isBanned, createdAt
+
 events/{id}                    ← live published events
-title, description, category,
-date, lastDateToRegister,
-location, registrationLink,
-imageUrl, isFeatured, submittedBy
+  title, description, category,
+  date, lastDateToRegister,
+  location, registrationLink,
+  imageUrl, isFeatured, submittedBy
+
 pending_events/{id}            ← awaiting admin review
-(same as events)
-
-status, rejectionReason, submittedAt
-
-
----
+  (same as events)
+  + status, rejectionReason, submittedAt
+```
 
 ## What I Learned
 
